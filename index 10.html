@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mission Letters · ปั่นแท็กให้แอนตัน</title>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Charmonman:wght@700&family=Mali:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--brown:#5a362a;--deep:#3f241b;--cream:#f6ecd9;--tan:#e6d3b3;--blush:#ecd5c8;--ink:#4a2c22;--frame:#e9e6e1;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--brown:#4e2e23;--deep:#35201a}}
+:root[data-theme="dark"]{--brown:#4e2e23;--deep:#35201a}
+*{box-sizing:border-box}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:'Mali','Tahoma',sans-serif;
+background:radial-gradient(circle,var(--cream) 0 5px,transparent 6px) 0 0/46px 46px,radial-gradient(circle,var(--cream) 0 5px,transparent 6px) 23px 23px/46px 46px,var(--brown);
+display:flex;flex-direction:column;align-items:center;padding:0 0 28px;overflow-x:hidden}
+.lace{width:100%;height:22px;flex:none;background:radial-gradient(circle at 50% 0,transparent 7px,var(--cream) 8px 10px,transparent 11px) 0 0/22px 22px repeat-x}
+.lace.b{transform:scaleY(-1)}
+.title{margin:22px 14px 8px;width:min(92vw,460px);padding:10px;border-radius:50%/46%;background:linear-gradient(145deg,#fff,var(--frame) 50%,#cfcac3);box-shadow:0 6px 18px #0006}
+.title div{border-radius:50%/46%;background:var(--cream);text-align:center;padding:26px 16px 20px}
+.title h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:clamp(38px,11vw,58px);margin:0;line-height:1.15}
+.title p{margin:6px 0 10px;font-size:14px}
+.tagbox{font-size:13px;display:flex;flex-direction:column;gap:4px;align-items:center}
+.tagbox input{font:inherit;width:100%;max-width:330px;padding:4px 10px;border:1.5px dashed var(--brown);border-radius:99px;background:#fffaf0;color:var(--ink);text-align:center}
+.stage{isolation:isolate;position:relative;width:min(92vw,420px);height:320px;margin:14px 0 6px}
+.pile .e{position:absolute;width:150px;height:98px;border-radius:5px;box-shadow:0 3px 7px #0005;transition:transform .35s}
+.e::before{content:"";position:absolute;inset:0;clip-path:polygon(0 0,100% 0,50% 62%);background:rgba(0,0,0,.09);border-radius:5px}
+.e::after{content:"";position:absolute;left:50%;top:48%;width:22px;height:22px;margin:-11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9a48f,#a45a49)}
+.pile.shake .e{animation:sh .7s}
+@keyframes sh{20%{transform:translate(-14px,8px) rotate(-18deg)}50%{transform:translate(16px,-10px) rotate(20deg)}80%{transform:translate(-8px,6px) rotate(-8deg)}}
+.btn{font:600 18px 'Mali',sans-serif;color:var(--cream);background:var(--deep);border:0;border-radius:99px;padding:14px 38px;cursor:pointer;box-shadow:0 4px 0 #1f110c;letter-spacing:1px}
+.btn:active{transform:translateY(3px);box-shadow:0 1px 0 #1f110c}
+.btn.alt{background:var(--cream);color:var(--deep);box-shadow:0 4px 0 #b8a37f;font-size:15px;padding:10px 22px}
+.btn:focus-visible,.env-big:focus-visible,input:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.count{margin-top:14px;font-size:14px;font-weight:600;color:var(--ink);background:var(--cream);padding:6px 18px;border-radius:99px;box-shadow:0 2px 0 #b8a37f}
+.note{margin:14px 14px 0;max-width:340px;font-size:13px;line-height:1.5;text-align:center;color:var(--ink);background:var(--cream);border:1.5px dashed var(--brown);border-radius:12px;padding:8px 14px}
+.tags{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:13px}
+.tags pre{margin:0;width:100%;max-width:330px;font:600 13px/1.6 'Mali',sans-serif;white-space:pre-wrap;word-break:break-all;text-align:center;user-select:all;-webkit-user-select:all;padding:8px 10px;border:1.5px dashed var(--brown);border-radius:12px;background:#fffaf0;color:var(--ink)}
+.tags .btn.alt{padding:6px 18px;font-size:14px;box-shadow:0 3px 0 #b8a37f}
+.modal{position:fixed;inset:0;z-index:999;background:#2a140ee6;display:none;align-items:center;justify-content:center;flex-direction:column;gap:18px;padding:16px}
+.modal.on{display:flex}
+.hint{color:var(--cream);font-size:15px}
+.env-big{position:relative;width:min(80vw,280px);height:min(54vw,186px);background:var(--cream);border:0;border-radius:6px;box-shadow:0 12px 30px #000a;cursor:pointer;animation:pop .5s cubic-bezier(.2,1.4,.4,1);transition:opacity .4s}
+@keyframes pop{from{transform:scale(.2) rotate(-25deg)}}
+.env-big .f{position:absolute;inset:0;background:var(--tan);clip-path:polygon(0 0,100% 0,50% 64%);transform-origin:top;transition:transform .45s;border-radius:6px}
+.env-big .s{position:absolute;left:50%;top:56%;width:38px;height:38px;margin:-19px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#d9a48f,#a45a49);box-shadow:0 2px 4px #0006;transition:opacity .2s}
+.env-big.open .f{transform:rotateX(180deg)}
+.env-big.open .s{opacity:0}
+.env-big.gone{opacity:0;pointer-events:none;position:absolute}
+.letter{display:none;width:min(88vw,340px);padding:16px;background:var(--cream);border-radius:10px;box-shadow:0 12px 30px #000a;animation:rise .55s ease-out}
+.letter.on{display:block}
+@keyframes rise{from{transform:translateY(60px) scale(.8);opacity:0}}
+.letter .in{border:2px dashed var(--brown);border-radius:6px;padding:20px 16px;text-align:center;outline:6px solid var(--cream);box-shadow:0 0 0 8px #fff9ec inset}
+.letter h2{font-family:'Great Vibes',cursive;font-weight:400;font-size:36px;margin:0 0 10px}
+.letter .m{font-size:18px;line-height:1.6;font-weight:600;margin:0}
+.letter .bonus{margin:12px 0 0;font-size:14px;background:var(--blush);border-radius:99px;padding:6px 12px}
+.row{display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="lace"></div>
+<div class="title"><div>
+<h1>Mission Letters</h1>
+<p>สุ่มจดหมาย 1 ฉบับ แล้วไปปั่นแท็กให้แอนตัน</p>
+<div class="tags"><span>แท็กและคีย์เวิร์ดวันนี้</span>
+<pre id="tagtext">ANTON SAINT LAURENT AMBASSADOR
+#ANTONxSaintLaurent
+#ANTONxSaintLaurentSS27</pre>
+<button class="btn alt" id="copy" type="button">คัดลอก</button></div>
+</div></div>
+
+<div class="stage"><div class="pile" id="pile"></div></div>
+<button class="btn" id="draw">สุ่มจดหมาย</button>
+<div class="count" id="count"></div>
+<div class="note">หมายเหตุ: ทำภารกิจเสร็จแล้ว ส่งหลักฐานได้ที่เมนชั่น หรือโพสต์ติดแท็ก</div>
+<div style="flex:1"></div>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="จดหมายมิสชั่น">
+<button class="env-big" id="env" aria-label="กดเพื่อเปิดจดหมาย"><span class="f"></span><span class="s"></span></button>
+<div class="hint" id="hint">แตะซองเพื่อเปิดจดหมาย</div>
+<div class="letter" id="letter"><div class="in">
+<h2>Your mission</h2>
+<p class="m" id="mtext"></p>
+<p class="bonus" id="bonus" hidden></p>
+<p class="note" style="margin:12px 0 0;max-width:none">ทำเสร็จแล้ว ส่งหลักฐานได้ที่เมนชั่น หรือโพสต์ติดแท็ก</p>
+</div>
+<div class="row"><button class="btn alt" id="again">สุ่มใหม่</button><button class="btn alt" id="done">ทำเสร็จแล้ว</button></div>
+</div>
+</div>
+<div class="lace b" style="margin-top:22px"></div>
+
+<script>
+// ---------- 200 missions ----------
+const T=[
+["คอมเมนต์ใต้โพสต์ IG ของแอนตัน {n} คอมเมนต์ต่อ 1 โพสต์",[3,5,7,10]],
+["คอมเมนต์ IG ให้แอนตันโพสต์ละ 1 คอมเมนต์ จำนวน {n} โพสต์",[3,5,7,10]],
+["ทวีตชื่นชมแอนตันพร้อมติด {tag} จำนวน {n} ทวีต",[1,3,5,10]],
+["โควตทวีตที่ติด {tag} พร้อมเขียนข้อความของตัวเอง {n} ทวีต",[3,5,7,10]],
+["รีทวีตทวีตที่ติด {tag} จำนวน {n} ทวีต",[5,10,15,20]],
+["กดไลก์ทวีตที่ติด {tag} จำนวน {n} ทวีต",[10,20,30,50]],
+["กดไลก์โพสต์ IG ของแอนตันย้อนหลัง {n} โพสต์",[5,10,15,20]],
+["แชร์โพสต์ของแอนตันลงสตอรี่ IG จำนวน {n} โพสต์",[1,3,5]],
+["เปิดดู MV หรือคลิปของแอนตันบน YouTube วนซ้ำ {n} รอบ",[3,5,10]],
+["กดไลก์และคอมเมนต์ใต้คลิป YouTube ที่มีแอนตัน {n} คลิป",[3,5,8]],
+["สตรีมเพลงที่แอนตันมีส่วนร่วม {n} รอบ",[5,10,20]],
+["ทวีตรูปแอนตันที่ชอบที่สุดพร้อมติด {tag} จำนวน {n} รูป",[1,3,5]],
+["แปลหรือสรุปคอนเทนต์ของแอนตันเป็นภาษาที่ถนัด {n} ชิ้น แล้วทวีตติด {tag}",[1,2,3]],
+["ตอบกลับ (Reply) ทวีตของแฟนคลับคนอื่นในแท็ก {tag} จำนวน {n} ทวีต",[3,5,10]],
+["ทวีตคำชมแอนตันข้อละ 1 ทวีต ให้ครบ {n} ข้อ พร้อมติด {tag}",[3,5,10]],
+["คอมเมนต์ภาษาอังกฤษใต้โพสต์ IG ของแอนตัน {n} โพสต์",[1,3,5]],
+["คอมเมนต์ใต้โพสต์ IG ของแอนตันเป็นอีโมจิล้วน {n} โพสต์",[3,5,10]],
+["กดไลก์คอมเมนต์ของแฟนคลับคนอื่นใต้โพสต์แอนตัน {n} คอมเมนต์",[10,20,30]]
+];
+const S=[
+"ทวีตชวนเพื่อนมาดันแท็ก {tag} พร้อมบอกเวลาที่จะปั่นกัน",
+"ตั้งรูปโปรไฟล์เป็นรูปแอนตันตลอดวันนี้",
+"เขียนจดหมายสั้นๆ ถึงแอนตัน 1 ฉบับ แล้วโพสต์ติด {tag}",
+"วาดหรือตัดต่อแฟนอาร์ตแอนตัน 1 ชิ้น แล้วโพสต์ติด {tag}",
+"ทวีตเล่าว่าแอนตันทำให้คุณยิ้มได้วันนี้ยังไง ติด {tag}",
+"โพสต์สตอรี่ IG รูปแอนตัน 1 สตอรี่ พร้อมแท็กเพจแฟนคลับ",
+"ทวีตบอกเมนต์หรือโมเมนต์ที่ชอบที่สุดของแอนตัน 1 อย่าง ติด {tag}",
+"หาคลิปโมเมนต์ตลกของแอนตัน 1 คลิป แล้วแชร์พร้อมติด {tag}",
+"ส่งต่อแท็ก {tag} ให้เพื่อนอย่างน้อย 3 คนในแชท",
+"ทวีตเล่าว่าคุณเริ่มชอบแอนตันตอนไหน ติด {tag}",
+"ทวีต 1 เหตุผลที่ภูมิใจในตัวแอนตัน ติด {tag}",
+"คอมเมนต์ให้กำลังใจใต้โพสต์ล่าสุดของแอนตัน 1 คอมเมนต์",
+"พักสายตาและดื่มน้ำ 5 นาที แล้วกลับมาปั่นต่อ 💧",
+"ทวีตภาพ Edit หรือ GIF ของแอนตัน 1 ทวีต ติด {tag}",
+"ค้นหา {tag} เลือกทวีตที่ชอบที่สุด 1 อัน แล้วไลก์ รีทวีต และคอมเมนต์ให้ครบ",
+"ทวีตขอบคุณแอนตันที่ทำให้วันนี้ดีขึ้น ติด {tag}",
+"แชร์คลิปหรือรูปของแอนตันไปอีกแพลตฟอร์ม 1 ที่ เช่น TikTok หรือ Messenger",
+"รีพลายให้กำลังใจเพื่อนแฟนคลับในแท็ก 1 ข้อความ 💪",
+"ทวีตความรู้สึกสั้นๆ 1 ประโยคถึงแอนตัน ติด {tag}",
+"รีทวีตทวีตที่ปักหมุดของแท็ก {tag} แล้วกดไลก์ด้วย"
+];
+const W=["","⚡ โบนัสโหมดด่วน: ทำให้เสร็จภายใน 10 นาที","🤝 โบนัส: ชวนเพื่อนอีก 1 คนมาทำพร้อมกัน"];
+let M=[];
+T.forEach(([t,v])=>v.forEach(n=>W.forEach(w=>M.push([t.replace(/\{n\}/g,n),w]))));
+S.forEach(s=>M.push([s,""]));
+M=M.slice(0,200);
+const TOTAL=M.length;
+
+// ---------- state ----------
+const $=id=>document.getElementById(id);
+let deck=[],cur=null,doneN=0;
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function refill(){deck=shuffle(M.map((_,i)=>i))}
+refill();
+function upd(){$('count').textContent="เหลือในกอง "+deck.length+" / "+TOTAL+" ฉบับ · ทำเสร็จแล้ว "+doneN}
+upd();
+
+// ---------- letter pile ----------
+const cols=['#f6ecd9','#e6d3b3','#ecd5c8','#f1e3c8'];
+const pile=$('pile');
+for(let i=0;i<20;i++){
+ const e=document.createElement('div');e.className='e';
+ e.style.cssText="background:"+cols[i%4]+";left:calc(50% - 75px + "+((Math.random()-.5)*210).toFixed(0)+"px);top:"+(18+Math.random()*190).toFixed(0)+"px;transform:rotate("+((Math.random()-.5)*70).toFixed(0)+"deg);z-index:"+i;
+ pile.appendChild(e);
+}
+
+// ---------- draw / open ----------
+function draw(){
+ if(!deck.length)refill();
+ pile.classList.remove('shake');void pile.offsetWidth;pile.classList.add('shake');
+ $('draw').disabled=true;
+ setTimeout(()=>{
+  cur=deck.pop();upd();
+  const env=$('env');env.className='env-big';env.style.animation='none';void env.offsetWidth;env.style.animation='';
+  $('letter').classList.remove('on');$('hint').style.display='';
+  $('modal').classList.add('on');env.focus();
+  $('draw').disabled=false;
+ },750);
+}
+function openEnv(){
+ const env=$('env');if(env.classList.contains('open'))return;
+ env.classList.add('open');$('hint').style.display='none';
+ const tag='#ANTONxSaintLaurent #ANTONxSaintLaurentSS27';
+ const [t,w]=M[cur];
+ $('mtext').textContent=t.replace(/\{tag\}/g,tag);
+ $('bonus').hidden=!w;$('bonus').textContent=w;
+ setTimeout(()=>{env.classList.add('gone');$('letter').classList.add('on')},480);
+}
+$('copy').onclick=async()=>{
+ const el=$('tagtext'),txt=el.textContent;let ok=false;
+ try{await navigator.clipboard.writeText(txt);ok=true}catch(e){
+  try{const r=document.createRange();r.selectNodeContents(el);const g=getSelection();g.removeAllRanges();g.addRange(r);ok=document.execCommand('copy')}catch(e2){}
+ }
+ $('copy').textContent=ok?'คัดลอกแล้ว ✓':'แตะข้อความเพื่อเลือก แล้วกดคัดลอก';
+ setTimeout(()=>$('copy').textContent='คัดลอก',2000);
+};
+$('draw').onclick=draw;
+$('env').onclick=openEnv;
+$('again').onclick=()=>{$('modal').classList.remove('on');draw()};
+$('done').onclick=()=>{doneN++;upd();$('modal').classList.remove('on')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')$('modal').classList.remove('on')});
+</script>
+</body>
+</html>
